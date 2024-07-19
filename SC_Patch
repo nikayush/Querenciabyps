@@ -1,0 +1,423 @@
+import sqlite3
+
+def get_user(username):
+    conn = sqlite3.connect('example.db')
+    cursor = conn.cursor()
+    query = f"SELECT * FROM users WHERE username = '{username}'"
+    cursor.execute(query)
+    user = cursor.fetchone()
+    conn.close()
+    return user
+
+# Example usage
+user = get_user("admin' OR '1'='1")
+print(user)
+import sqlite3
+
+def get_user(username):
+    conn = sqlite3.connect('example.db')
+    cursor = conn.cursor()
+    # Using parameterized queries to prevent SQL injection
+    query = "SELECT * FROM users WHERE username = ?"
+    cursor.execute(query, (username,))
+    user = cursor.fetchone()
+    conn.close()
+    return user
+
+# Example usage
+user = get_user("admin' OR '1'='1")
+print(user)
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/greet')
+def greet():
+    name = request.args.get('name')
+    return f"<h1>Hello, {name}!</h1>"
+
+if __name__ == '__main__':
+    app.run()
+from flask import Flask, request
+from markupsafe import escape
+
+app = Flask(__name__)
+
+@app.route('/greet')
+def greet():
+    name = request.args.get('name')
+    # Escaping user input to prevent XSS
+    safe_name = escape(name)import os
+from flask import Flask, request
+from werkzeug.utils import secure_filename
+
+app = Flask(__name__)
+UPLOAD_FOLDER = '/uploads'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return "File uploaded!"
+    return "Invalid file type!", 400
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Vulnerable to RCE
+    output = subprocess.check_output(f"ping -c 1 {host}", shell=True)
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+import subprocess
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    host = request.args.get('host')
+    # Securing command execution
+    output = subprocess.check_output(['ping', '-c', '1', host])
+    return output
+
+if __name__ == '__main__':
+    app.run()
+
+    return f"<h1>Hello, {safe_name}!</h1>"
+
+if __name__ == '__main__':
+    app.run()
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/update', methods=['POST'])
+def update():
+    # Assume there's some update logic here
+    return "Update successful!"
+
+if __name__ == '__main__':
+    app.run()
+from flask import Flask, request
+from flask_wtf.csrf import CSRFProtect
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your_secret_key'
+csrf = CSRFProtect(app)
+
+@app.route('/update', methods=['POST'])
+def update():
+    # Assume there's some update logic here
+    return "Update successful!"
+
+if __name__ == '__main__':
+    app.run()
+import pickle
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/data', methods=['POST'])
+def data():
+    obj = request.data
+    # Insecure deserialization
+    deserialized_obj = pickle.loads(obj)
+    return "Data processed!"
+
+if __name__ == '__main__':
+    app.run()
+import pickle
+import json
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/data', methods=['POST'])
+def data():
+    obj = request.data
+    # Secure deserialization using JSON
+    deserialized_obj = json.loads(obj)
+    return "Data processed!"
+
+if __name__ == '__main__':
+    app.run()
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    file = request.files['file']
+    file.save(f"/uploads/{file.filename}")
+    return "File uploaded!"
+
+if __name__ == '__main__':
+    app.run()
